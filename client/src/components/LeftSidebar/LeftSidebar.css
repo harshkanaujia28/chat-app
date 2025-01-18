@@ -1,0 +1,372 @@
+.LeftSidebar {
+  
+    background-color: rgba(194, 51, 242, 0.816);
+    backdrop-filter: blur(10px);
+    color: white;
+    height: 90vh;
+}
+
+.ls-top {
+    padding: 20px;
+}
+body{
+    color: white;
+}
+
+.ls-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ls-nav img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.ls-nav .logo {
+    max-width: 50px;
+}
+
+.ls-nav .menu img {
+    max-height: 20px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.noti {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 8px;  
+}
+
+.ls-search {
+    background-color: #ffffff00;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin-top: 20px;
+}
+
+.ls-search img {
+    width: 16px;
+}
+
+.ls-search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgb(14, 13, 13);
+    font-size: 11px;
+}
+
+.ls-search input::placeholder {
+    color: #c8c8c8;
+}
+
+.ls-list {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    overflow-y: scroll;
+    
+    gap: 10px;
+}
+
+.ls-nav h3 {
+    font-size: 22px;
+    padding-right: 60px;
+    font-weight: 500;
+}
+
+.friends img {
+    width: 35px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.friends {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.friends div {
+    display: flex;
+    flex-direction: column;
+   
+}
+ .U {
+    font-size: 15px;
+}
+
+.friends span {
+    color: #9f9f9f;
+    font-size: 12px;
+}
+
+.friends:hover {
+    /* background-color: #077eff; */
+    background-color: rgba(39, 37, 37, 0.518);
+    backdrop-filter: blur(10px);
+}
+
+.friends:hover span {
+    color: white;
+}
+
+.sub-menu {
+    font-size: 15px;
+    height: 100px;
+    width: 100px;
+    background-color: #8c8a8a;
+    position: absolute;
+    margin-left: -89px;
+    margin-top: 0px;
+    border-radius: 5px;
+    padding: 10px;
+    background: white;
+    color: #001030;
+    padding-top: 25px;
+    display: none;
+}
+
+.sub-menu hr {
+    border: none;
+    height: 1px;
+    background-color: #4a4a4a;
+    margin: 8px 0px;
+}
+
+.sub-menu p {
+    cursor: pointer;
+    font-size: 15px;
+    padding-right: 10px;
+}
+
+.menu:hover .sub-menu {
+    display: block;
+}
+
+.date {
+    white-space: nowrap; /* Prevents the date from wrapping */
+    overflow: hidden; /* Hide overflow text if it's too long */
+    text-overflow: ellipsis; /* Adds ellipsis (...) for overflow text */
+    font-size: 12px; /* Adjust size to your preference */
+    color: rgb(255, 249, 249); /* Make the date color gray or any other color you prefer */
+    flex-shrink: 0; /* Prevents shrinking */
+    margin-top: 5px; /* Adds a little space above */
+    padding-left: 2px;
+    font-size: 9px;
+  }
+  
+
+.notification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background-color: rgb(43, 226, 52);
+    font-size: 10px;
+    text-align: center;
+    margin-left: 65px;
+}
+
+.no-chats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 200px;
+}
+/* Chat list container */
+.chat-list {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 8px;
+    overflow: hidden;
+   
+    font-family: Arial, sans-serif;
+  }
+
+  
+  /* Chat item */
+  .chat-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .chat-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Avatar */
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #6c757d;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 12px;
+  }
+  
+  /* Chat info */
+  .chat-info {
+    flex: 1;
+  }
+  
+  /* Username */
+  .username {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* Last message */
+  .last-message {
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Time */
+  .time {
+    font-size: 12px;
+    color: #999;
+    margin-left: 8px;
+  }
+  /* Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .LeftSidebar {
+        height: 100%;
+        width: 250px; /* Reduce sidebar width */
+    }
+
+    .ls-nav h3 {
+        font-size: 18px; /* Adjust heading size */
+    }
+
+    .ls-list {
+        max-height: 65vh; /* Limit list height */
+    }
+
+    .friends {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    .chat-item .avatar {
+        width: 35px;
+        height: 35px;
+    }
+
+    .username {
+        font-size: 14px;
+    }
+
+    .last-message {
+        font-size: 12px;
+    }
+}
+
+/* Mobile Landscape (max-width: 768px) */
+@media (max-width: 768px) {
+    .LeftSidebar {
+        width: 200px; /* Smaller sidebar */
+    }
+
+    .ls-top {
+        padding: 10px;
+    }
+
+    .ls-nav h3 {
+        font-size: 16px;
+    }
+
+    .ls-search input {
+        font-size: 10px;
+    }
+
+    .ls-list {
+        height: auto;
+        max-height: 50vh; /* Adjust list height for smaller viewports */
+        overflow-y: auto;
+    }
+
+    .friends {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    .chat-item .avatar {
+        width: 30px;
+        height: 30px;
+    }
+
+    .username {
+        font-size: 12px;
+    }
+
+    .last-message {
+        font-size: 10px;
+    }
+}
+
+/* Mobile Portrait (max-width: 480px) */
+@media (max-width: 480px) {
+    .LeftSidebar {
+        display: none; /* Hide sidebar for smaller devices */
+    }
+
+    .ls-nav h3 {
+        font-size: 14px;
+    }
+
+    .ls-search {
+        padding: 8px;
+    }
+
+    .chat-list {
+        border-radius: 0; /* Remove rounded corners for fullscreen effect */
+        margin: 0;
+    }
+
+    .chat-item {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start;
+        padding: 8px;
+    }
+
+    .chat-item .avatar {
+        margin-bottom: 8px;
+    }
+
+    .username {
+        font-size: 12px;
+    }
+
+    .last-message {
+        font-size: 10px;
+    }
+}

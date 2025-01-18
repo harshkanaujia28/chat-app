@@ -1,0 +1,20 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+  ::-webkit-scrollbar{
+    display: none;
+  }
+  img.dot{
+    width: 15px !important;
+  }
+  body{
+    height:0vh;
+    width: 100%;
+    background-image: url("src/assets/image4.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;  
+    position: relative;
+  }

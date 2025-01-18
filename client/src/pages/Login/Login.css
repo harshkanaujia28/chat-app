@@ -1,0 +1,137 @@
+.login{
+    padding-top: 0px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    
+  
+   padding-left: 0; 
+   
+}
+input:focus {
+    outline: none;
+}
+h2{
+   
+   color: rgb(31, 95, 246);
+   font-size: 300;
+   font-size: 30px;
+   padding-bottom: 20px;
+   text-align: center;
+  
+}
+.right{
+    height: 80vh;
+    width: 30%;
+    background-color: rgba(92, 92, 93, 0.298);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+ 
+    padding-top: 20px;
+  
+}
+.left{
+    height: 80vh;
+    width:40%; 
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+  
+}
+.right form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    color: black;
+}
+.right form input{
+    height:50px;
+    width: 350px;
+    border-radius: 0px;
+    font-size: 15px;
+    padding-left: 10px;
+    border: none;
+   border-bottom: 2px solid rgb(31, 95, 246);
+  
+   
+}
+input{
+    background-color: rgba(249, 249, 250, 0);
+   
+}
+.image_name{
+   display: flex;
+   align-items: center;
+  
+}
+.img{
+    height:100px;
+    width: 100px;
+    background-image: url('src/assets/logo_img.png');
+    background-size: cover;
+}
+.name{
+   font-size: 40px;
+   font-weight: 700;
+   color:rgb(42, 104, 237);
+}
+.btn{
+    height: 50px;
+    width: 370px;
+    border: none;
+    background-color: rgb(31, 95, 246);
+    color: white;
+    font-size: 15px;
+    border-radius: 20px;
+}
+.term{
+    display: flex;
+    justify-content: flex-start;
+   gap: 10px;
+}
+.term p{
+    font-size:15px;
+    color: rgb(14, 14, 14);
+}
+#check{
+   height: 20px;
+   width: 20px;
+}
+.login-toggle{
+    color: rgb(8, 8, 8);
+}
+.login-toggle span{
+    color: rgb(31, 95, 246) ;
+    cursor: pointer;
+}
+h1{
+ 
+    font-size: 40px;
+    color: rgb(31, 30, 30);
+    font-weight: 500;
+    padding-top: 120px; 
+}
+h1 span::before { 
+    content: "Text"; 
+    animation: animate infinite 3s; 
+    padding-left: 10px; 
+    color:rgb(31, 95, 246);
+} 
+
+@keyframes animate { 
+
+    0% { 
+        content: "Text"; 
+    } 
+
+    50% { 
+        content: "Voice Call"; 
+    } 
+
+    75% { 
+        content: "Video Call"; 
+    } 
+}
+

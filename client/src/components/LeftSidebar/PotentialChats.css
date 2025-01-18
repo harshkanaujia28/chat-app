@@ -1,0 +1,42 @@
+.second {
+   height: 40px;
+   width: 260px;
+    gap: 10px;
+   
+    text-align: center; 
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.single-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    position: relative;
+    color: rgb(32, 79, 236);
+    cursor: pointer;
+}
+
+.user-name {
+    max-height: 50px; /* Adjust height as needed */
+    overflow-x: auto; /* Enable vertical scrolling */
+    width: 100%; /* Optional: Make it take full width */
+    padding-right: 10px; /* Add space for scrollbar */
+    word-break: break-word; /* Handle long words properly */
+}
+
+.user-online {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
+    display: inline-block;
+    margin-left: 5px;
+  }
+  
