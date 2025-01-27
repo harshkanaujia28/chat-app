@@ -21,7 +21,7 @@ export const postRequest = async (url, body) => {
     toast.error(message); // Add this line to show the error
     return { error: true, message };
   }
-  toast.success("Your account open successfully!");
+  // toast.success("Your account open successfully!");
   return data;
 };
 

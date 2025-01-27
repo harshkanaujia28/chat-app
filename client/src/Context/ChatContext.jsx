@@ -26,7 +26,7 @@ export const ChatContextProvider = ({ children, user }) => {
   console.log("notifications", notifications);
   // socket.io.connect
   useEffect(() => {
-    const newSocket = io(import.meta.env.VITE_SOCKET_URL);
+    const newSocket = io(import.meta.env.VITE_SOCKET_URL );
     setSocket(newSocket);
     return () => {
       newSocket.disconnect();
