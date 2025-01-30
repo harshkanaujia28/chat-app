@@ -50,27 +50,49 @@ export const ChatContextProvider = ({ children, user }) => {
 
   //revieve message and notify user
   useEffect(() => {
-    if (socket) {
-      socket.on("receiveMessage", (message) => {
-        if (currentChat?._id === message.chatId) {
-          setMessages((prev) => [...prev, message]);
-        }
-      });
-      socket.on("getNotification", (res) => {
-        const isChatOpen = currentChat?.members.some(id => id === res.senderId)
-        if (isChatOpen) {
-          setNotifications(prev => [{ ...res, isRead: true }, ...prev])
-        } else {
-          setNotifications(prev => [res, ...prev])
-        }
-      })
-    }
-    // return () =>{
-    //   socket.off("recieveMessage");
-    //   socket.off("getNotification");
-    // }
-  }
-    , [socket, currentChat]);
+    console.log("useEffect triggered due to socket or currentChat change.");
+  
+    if (!socket) return;
+  
+    const handleReceiveMessage = (message) => {
+      console.log("Message received:", message);
+      if (currentChat?._id === message.chatId) {
+        setMessages((prev) => {
+          if (!prev.some((msg) => msg._id === message._id)) {
+            return [...prev, message];
+          }
+          return prev;
+        });
+      }
+    };
+  
+    const handleGetNotification = (res) => {
+      console.log("Notification received:", res);
+      const isChatOpen = currentChat?.members.includes(res.senderId);
+  
+      if (!notificationsRef.current.some((n) => n._id === res._id)) {
+        notificationsRef.current = [res, ...notificationsRef.current];
+  
+        setNotifications((prev) => {
+          if (isChatOpen) {
+            return [{ ...res, isRead: true }, ...prev];
+          }
+          return [res, ...prev];
+        });
+      }
+    };
+  
+    socket.on("receiveMessage", handleReceiveMessage);
+    socket.on("getNotification", handleGetNotification);
+  
+    return () => {
+      console.log("Cleaning up event listeners...");
+      socket.off("receiveMessage", handleReceiveMessage);
+      socket.off("getNotification", handleGetNotification);
+    };
+  }, [socket, currentChat?._id]); // Minimal dependencies
+   // Only run when socket or currentChat changes
+  
 
   const sendTextMessage = useCallback(
     async (textMessage, sender, currentChatId, setTextMessage) => {
