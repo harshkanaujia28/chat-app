@@ -12,8 +12,18 @@ import ProfileUpdate from './pages/Profile update/ProfileUpdate'
 import { ChatContextProvider } from './Context/ChatContext';
 import Chatbox from './components/Chatbox/Chatbox';
 import EmojiPicker from 'emoji-picker-react';
+import backgroundImage from "./assets/image4.jpg";
+
 const App = () => {
-  const {user} = useContext(AuthContext)
+  const appStyle = {
+    height: "100vh",
+    width: "100%",
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+};
+ const {user} = useContext(AuthContext)
 
   const router = createBrowserRouter([
     {
@@ -75,14 +85,15 @@ const App = () => {
   ]);
  
   return (
-    <>
+    <div style={appStyle}>
+
     <ChatContextProvider user={user}>
        <RouterProvider router={router} />
        <ToastContainer />
 
        </ChatContextProvider>
      
-    </>
+    </div>
   )
 }
 

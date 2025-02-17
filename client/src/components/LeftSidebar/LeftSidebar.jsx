@@ -6,14 +6,11 @@ import { Link } from "react-router-dom";
 import { useFetchRecipientUser } from "../../../hooks/userfetchRecipient";
 import { ChatContext } from "../../Context/ChatContext";
 import PotentialChats from "./PotentialChats";
-import Chatbox from "../Chatbox/Chatbox";
 import { UnreadNotificationsFunc } from "../../Utils/UnreadNotification";
 import { useFetchLatestMessage } from "../../../hooks/usefetchLastMessage";
 import moment from "moment";
 
-
-
-const LeftSidebar = ({ chats, onChatSelect }) => {
+const LeftSidebar = ({ onChatSelect, toggleChatbox }) => {
   const { user, logoutUser } = useContext(AuthContext);
   const { updateCurrentChat, currentChat } = useContext(ChatContext);
   const { userChats, isUseChatsLoading, userChatsError } =
@@ -50,7 +47,6 @@ const LeftSidebar = ({ chats, onChatSelect }) => {
           <img src={assets.search_icon} alt="" />
           <input type="text" placeholder="search here" />
         </div>
-     {/* <ChatSearch/> */}
       </div>
 
       <PotentialChats />
@@ -58,7 +54,7 @@ const LeftSidebar = ({ chats, onChatSelect }) => {
       <div className="ls-list">
         {userChats && userChats.length > 0 ? (
           userChats.map((chat, index) => {
-            const { recipientUser } = useFetchRecipientUser(chat, user); // Call hook inside map
+            const { recipientUser } = useFetchRecipientUser(chat, user);
             const {
               onlineUsers,
               notifications,
@@ -75,14 +71,12 @@ const LeftSidebar = ({ chats, onChatSelect }) => {
             ); 
             const truncateText = (text) => {
               let shortText = text.substring(0, 20);
-
               if (text.length > 20) {
                 shortText += "...";
               }
               return shortText;
-            }
+            };
             return (
-              <> 
               <div
                 className="friends"
                 key={index}
@@ -94,42 +88,38 @@ const LeftSidebar = ({ chats, onChatSelect }) => {
                     );
                   }
                   updateCurrentChat(chat);
+                  toggleChatbox();  // Open chatbox on click
                 }}
               >
-              
                 <img src={assets.profile_img2} alt="profile" />
                 <div className="chat-list">
-                <div className="Username">
-                  <p className="U">{recipientUser?.name || "Unknown User"}</p>{" "}
-                  {/* Safe fallback */}
-                  {latestMessage?.text && (
-                    <span className="noti">{truncateText(latestMessage?.text)}</span>
-                  )}
-                  
-                </div>
-                <div className="note">
-                  <div
-                    className={
-                      thisUserNotification?.length > 0 ? "notification" : ""
-                    }
-                  >
-                    {thisUserNotification?.length > 0
-                      ? thisUserNotification?.length
-                      : ""}
+                  <div className="Username">
+                    <p className="U">{recipientUser?.name || "Unknown User"}</p>
+                    {latestMessage?.text && (
+                      <span className="noti">{truncateText(latestMessage?.text)}</span>
+                    )}
                   </div>
-                  <div className="date">
-                   {moment(latestMessage?.createdAt).calendar()}
+                  <div className="note">
+                    <div
+                      className={
+                        thisUserNotification?.length > 0 ? "notification" : ""
+                      }
+                    >
+                      {thisUserNotification?.length > 0
+                        ? thisUserNotification?.length
+                        : ""}
+                    </div>
+                    <div className="date">
+                      {moment(latestMessage?.createdAt).calendar()}
+                    </div>
                   </div>
-                </div>
                 </div>
                 {isUserOnline ? (
                   <img src={assets.green_dot} alt="status" className="dot" />
                 ) : (
                   ""
                 )}
-               
               </div>
-              </>
             );
           })
         ) : (

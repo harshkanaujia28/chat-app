@@ -5,7 +5,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #351e35;
+ background-color: #351e35;
 }
 /* User Info Bar at the Top */
 .chat-user {
@@ -39,6 +39,7 @@
   flex: 1;
   overflow-y: auto;
   padding: 15px;
+  background-image:url("client/src/assets/images.jpg");
 }
 
 /* Chat Messages */
