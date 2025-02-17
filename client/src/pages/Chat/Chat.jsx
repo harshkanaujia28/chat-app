@@ -1,52 +1,57 @@
-import React, { useContext, useState } from "react";
-import "./Chat.css";
-import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
-import Chatbox from "../../components/Chatbox/Chatbox";
-import RightSidebar from "../../components/RightSidebar/RightSidebar";
-import { ChatContext } from "../../Context/ChatContext";
-import { AuthContext } from "../../Context/AuthContext";
-import 'ldrs/jelly'
+"use client"
 
-// Default values shown  
-
+import { useContext, useState } from "react"
+import "./Chat.css"
+import LeftSidebar from "../../components/LeftSidebar/LeftSidebar"
+import Chatbox from "../../components/Chatbox/Chatbox"
+import RightSidebar from "../../components/RightSidebar/RightSidebar"
+import { ChatContext } from "../../Context/ChatContext"
+import { AuthContext } from "../../Context/AuthContext"
+import "ldrs/jelly"
 
 const Chat = () => {
-  const {
-    userChats,
-    isUserChatsLoading,
-    userChatsError,
-    updateCurrentChat,
-    currentChat,
-  } = useContext(ChatContext);
-  const { user } = useContext(AuthContext);
+  const { userChats, isUserChatsLoading, userChatsError, updateCurrentChat, currentChat } = useContext(ChatContext)
+  const { user } = useContext(AuthContext)
 
-  // State to toggle the visibility of the RightSidebar
-  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
+  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false)
+  const [isChatboxVisible, setIsChatboxVisible] = useState(false)
+  const [isChatVisible, setIsChatVisible] = useState(false)
 
-  // Handle click on the help icon
-  const toggleRightSidebar = () => setIsRightSidebarOpen(!isRightSidebarOpen);
+  const toggleRightSidebar = () => setIsRightSidebarOpen(!isRightSidebarOpen)
+  const toggleChatbox = () => setIsChatboxVisible(!isChatboxVisible)
+  const toggleChatVisibility = () => setIsChatVisible(!isChatVisible)
+  const handleChatSelect = (chat) => {
+    updateCurrentChat(chat)
+    setIsChatboxVisible(true) // Show chatbox when a chat is selected
+  }
+  const goBackToChatList = () => setIsChatboxVisible(false) // Back button to return to chat list
 
-  if (isUserChatsLoading) return <p className="Load"><l-jelly size="40" speed="0.9" color="#B224E5" ></l-jelly></p>; // Handle loading state
-  if (userChatsError) return <p>Error loading chats: {userChatsError}</p>; // Handle error state
+  if (isUserChatsLoading)
+    return (
+      <p className="Load">
+        <l-jelly size="40" speed="0.9" color="#B224E5"></l-jelly>
+      </p>
+    )
+  if (userChatsError) return <p>Error loading chats: {userChatsError}</p>
 
   return (
     <div className="chat">
       <div className="chat-container">
-        {/* Render LeftSidebar */}
-        <LeftSidebar user={user} chats={userChats} />
+        {/* Desktop: Always show LeftSidebar */}
+        <LeftSidebar user={user} chats={userChats} onChatSelect={handleChatSelect} />
 
-        {/* Ensure Chatbox is rendered only when there is an active chat */}
+        {/* Mobile: Show Chatbox only if a chat is selected */}
         {currentChat ? (
-          <Chatbox toggleRightSidebar={toggleRightSidebar} />
+          <Chatbox toggleRightSidebar={toggleRightSidebar} goBack={() => setIsChatboxVisible(false)} />
         ) : (
           <p className="conversation">No conversation selected yet...</p>
         )}
 
-        {/* Conditionally render the RightSidebar */}
+        {/* RightSidebar (Only show when toggled) */}
         {isRightSidebarOpen && <RightSidebar />}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Chat;
+export default Chat

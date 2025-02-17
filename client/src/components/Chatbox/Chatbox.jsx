@@ -8,7 +8,7 @@ import { useFetchRecipientUser } from "../../../hooks/userfetchRecipient";
 import { AuthContext } from "../../Context/AuthContext";
 import InputEmoji from "react-input-emoji"
 
-function Chatbox({ toggleRightSidebar }) {
+function Chatbox({ toggleRightSidebar, goBack  }) {
   const { user } = useContext(AuthContext);
   const { currentChat, messages, addMessage, isMessagesLoading, sendTextMessage } = useContext(ChatContext);
   const { recipientUser } = useFetchRecipientUser(currentChat, user);
@@ -60,6 +60,7 @@ function Chatbox({ toggleRightSidebar }) {
   return (
     <div className="chatbox">
       <div className="chat-user">
+      <button onClick={goBack} className="back-button"/>
         <img src={assets.profile_img2} alt="" />
         <p>
           {recipientUser?.name || "Unknown User"}{" "}

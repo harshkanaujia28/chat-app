@@ -293,7 +293,8 @@ body{
 /* Mobile Landscape (max-width: 768px) */
 @media (max-width: 768px) {
     .LeftSidebar {
-        width: 200px; /* Smaller sidebar */
+        width: 100%;
+        height: 100vh;
     }
 
     .ls-top {
@@ -310,12 +311,12 @@ body{
 
     .ls-list {
         height: auto;
-        max-height: 50vh; /* Adjust list height for smaller viewports */
+        max-height: calc(100vh - 200px); /* Adjust list height for smaller viewports */
         overflow-y: auto;
     }
 
     .friends {
-        padding: 6px 10px;
+        padding: 15px;
         font-size: 11px;
     }
 
@@ -334,39 +335,4 @@ body{
 }
 
 /* Mobile Portrait (max-width: 480px) */
-@media (max-width: 480px) {
-    .LeftSidebar {
-        display: none; /* Hide sidebar for smaller devices */
-    }
-
-    .ls-nav h3 {
-        font-size: 14px;
-    }
-
-    .ls-search {
-        padding: 8px;
-    }
-
-    .chat-list {
-        border-radius: 0; /* Remove rounded corners for fullscreen effect */
-        margin: 0;
-    }
-
-    .chat-item {
-        flex-direction: column; /* Stack items vertically */
-        align-items: flex-start;
-        padding: 8px;
-    }
-
-    .chat-item .avatar {
-        margin-bottom: 8px;
-    }
-
-    .username {
-        font-size: 12px;
-    }
-
-    .last-message {
-        font-size: 10px;
-    }
-}
+ 

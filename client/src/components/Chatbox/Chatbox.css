@@ -168,7 +168,7 @@
 /* Mobile Landscape (max-width: 768px) */
 @media (max-width: 768px) {
   .chatbox {
-    height: 85vh;
+    height: 100vh;
   }
 
   .chat-user {
@@ -190,6 +190,14 @@
 
   .chat-content {
     padding: 8px;
+    height: calc(100vh - 120px);
+  }
+
+  .chat-input {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }
 
   .chat-input input[type="text"] {
@@ -208,7 +216,7 @@
 /* Mobile Portrait (max-width: 480px) */
 @media (max-width: 480px) {
   .chatbox {
-    height: 80vh;
+    height: 100vh;
   }
 
   .chat-user {
